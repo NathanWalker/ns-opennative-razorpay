@@ -1,0 +1,36 @@
+diff --git a/node_modules/react-native-razorpay/ios/RazorpayCheckout.m b/node_modules/react-native-razorpay/ios/RazorpayCheckout.m
+index 36144c9..919f5c3 100644
+--- a/node_modules/react-native-razorpay/ios/RazorpayCheckout.m
++++ b/node_modules/react-native-razorpay/ios/RazorpayCheckout.m
+@@ -25,7 +25,7 @@ @implementation RNRazorpayCheckout
+ RCT_EXPORT_METHOD(open : (NSDictionary *)options) {
+ 
+     NSString *keyID = (NSString *)[options objectForKey:@"key"];
+-    dispatch_sync(dispatch_get_main_queue(), ^{
++//    dispatch_sync(dispatch_get_main_queue(), ^{
+         Razorpay *razorpay = [Razorpay initWithKey:keyID
+                                andDelegateWithData:self];
+         [razorpay setExternalWalletSelectionDelegate:self];
+@@ -45,7 +45,7 @@ @implementation RNRazorpayCheckout
+ 
+         //Use 'open' method with displayController parameter
+         [razorpay open:tempOptions displayController:rootViewController];
+-    });
++    //});
+ }
+ 
+ /*
+diff --git a/node_modules/react-native-razorpay/react-native-razorpay.podspec b/node_modules/react-native-razorpay/react-native-razorpay.podspec
+index 90e1a83..20e46e8 100644
+--- a/node_modules/react-native-razorpay/react-native-razorpay.podspec
++++ b/node_modules/react-native-razorpay/react-native-razorpay.podspec
+@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
+   s.source       = { :git => "https://github.com/razorpay/react-native-razorpay.git", :tag => "v#{s.version}" }
+   s.source_files  = "ios/**/*.{h,m}"
+ 
+-  s.dependency 'React'
++  s.dependency 'React-Core'
+   s.dependency 'razorpay-pod'
+ 
+ end
+\ No newline at end of file
